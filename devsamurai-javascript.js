@@ -1,8 +1,8 @@
 https://www.youtube.com/watch?v=e-5obm1G_FY&ab_channel=JSConf
 https://www.youtube.com/watch?v=3PHXvlpOkf4&ab_channel=freeCodeCamp.org
 
-prompt
-confirmS
+
+/////TypeOf
 
 function soma(x,y){
     return x+y;
@@ -17,7 +17,6 @@ function calcular(x,y,operacao){
 calcular(5,6,soma);
 calcular(5,6,subst);
 
-----------------------------------------------------
 
 var nomes = [];
 
@@ -55,7 +54,6 @@ var index = nomes.indexOf("Ana"); // index = 0
 
 console.log(nomes);
 
--------------------------------------------------------------------
 
 var qtes = Number(prompt("Digite a quantidade de dados"));
 var numbers = [qtes];
@@ -71,8 +69,6 @@ numbers.forEach(function(valor){
 
 console.log("Média é: " + Number(soma/qtes));
 
--------------------------------------------------------------------
-Objeto 
 
 var convidados = [];
 
@@ -94,11 +90,11 @@ convidados["RGCCCC"] = {nome: "Paulo", idade: 32, rg: "RGCCCC"};
 
 console.log(convidados["RGCCCC"]);
 
-Parametro: arguments nativo JS
+//Parametro: arguments nativo JS
 
-[ARRAY]
+//[ARRAY]
  
- -- FILTER: filtra os dados do array : >10 CONDICIONAL
+// -- FILTER: filtra os dados do array : >10 CONDICIONAL
     
 
     var numeros = [10,18,22];
@@ -108,7 +104,7 @@ Parametro: arguments nativo JS
     var resul = numeros.filter(maiorQ10);
     console.log(resul);
     
-    ou
+  //  ou
     
     var resul = numeros.filter(function(item){
         return item > 10;
@@ -124,7 +120,7 @@ Parametro: arguments nativo JS
         return item.tamanho == "P";
     });
 
--- MAP: modificar valor (executa operação)
+//-- MAP: modificar valor (executa operação)
 
     var numeros = [10,18,22];
     var dobrar = function(item){ 
@@ -133,7 +129,7 @@ Parametro: arguments nativo JS
     var resul = numeros.map(dobrar);
     console.log(resul);
     
-    ou
+  //  ou
     
     var resul = numeros.map(function(item){
         return item * 10;
@@ -145,14 +141,14 @@ Parametro: arguments nativo JS
         {id:3, nome: "Karen", cor: "Branca", tamanho: "M", categoria:"vestuário"}
     ];
 
-    ---Função anonima
+    //---Função anonima
     var resul = produtos.map(function(item){
         var nome = {nome: item.nome.toUpperCase()};
         return Object.assign(item, nome);
         //Substitui apenas o atributo em questao no objeto
     });
 
--- REDUCE: Agregacao
+//-- REDUCE: Agregacao
 
     var numeros = [10,18,22];
 
@@ -183,7 +179,7 @@ Parametro: arguments nativo JS
     var agrupador = groupBy(produtos,'nome');
     console.log(agrupador);
 
-     --Prototype
+     //--Prototype
 
      Array.prototype.groupBy = function(prop){
         var value = this.reduce(function(total,item){
@@ -199,3 +195,35 @@ Parametro: arguments nativo JS
     }).filter(function(item){
         return item.cor = "preta";
     }).groupBy('nome');
+
+
+    var pessoa = [
+        {id:1, nome: "Paulo", sobre: "Diniz", idade: 40, 
+            nasc:{
+                dia: 09,
+                mes: 10,
+                ano: 1980
+                }
+            }
+    ];
+
+    var funcionario = {
+        nome: "Paulo Diniz",
+        idade: 40,
+        registro: "12345RG",
+        depart: "TI",
+        detalhes: {
+            hobies: ["malhação","leitura"]
+        },
+        registraEntrada: function(data){
+            console.log("Entrada: " + data + " - " + this.registro);
+        },
+        registraSaida: function(data){
+            console.log("Saida: " + data + " - " + this.registro);
+        }
+        
+    };
+    funcionario.registraEntrada("18/02/2021 10:00");
+    funcionario.registraSaida("18/02/2021 18:00");
+
+    var funcionarioFinanceiro = Object.create(funcionario);
